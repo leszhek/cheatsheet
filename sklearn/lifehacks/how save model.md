@@ -2,9 +2,12 @@
 
 
 Для записи моделинужно воспользоваться командами:
-<code>
+```
 filename = 'filename.sav'
-pickle.dump(model, open(filename, 'wb'))</code>
+pickle.dump(model, open(filename, 'wb'))
+```
 
 Для загрузки:
-<code>loaded_model = pickle.load(open(filename, 'rb'))</code>
+```
+loaded_model = pickle.load(open(filename, 'rb'))
+```
