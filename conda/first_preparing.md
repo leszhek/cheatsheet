@@ -33,14 +33,34 @@ brew install --cask miniconda
 
 В документации советуют оставить среду (base) нетронутой, а пользоваться другими средами.
 
-
-1. Настраиваем источники пакетов (добавим ветку conda-forge и сделаем ее главной)
+1. Для начала conda нужно инициализировать (о чем homebrew вам обязательно напишет):
 ```
-conda config --add channels conda-forge
-conda config --set channel_priority true
+==> Caveats
+Please run the following to setup your shell:
+  conda init "$(basename "${SHELL}")"
 ```
 
-Эти команды создадут файл конфигурации **~/.condarc** с содержимым:
+Что ж - это и делаем:
+```
+$ conda init "$(basename "${SHELL}")"
+```
+
+Если вы не хотите, чтобы конда каждый раз грузилась по умолчанию, просто поставьте ее в "тихий режим":
+```
+conda config --set auto_activate_base false
+```
+Но тогда, для работы со средами потребуется ее активировать вручную:
+```
+conda activate
+```
+
+2. Настраиваем источники пакетов (добавим ветку conda-forge и сделаем ее главной)
+```
+$ conda config --add channels conda-forge
+$ conda config --set channel_priority true
+```
+
+Эти команды запишут в файл конфигурации **~/.condarc**:
 
 ```
 channels:
@@ -59,15 +79,15 @@ channel_priority: flexible
 
 И, наконец, в **disable** приоритет имеет версия пакета.
 
-2. Создаем среду для разработки, например - dev, и переключаемся на нее
+3. Если нужно, создаем новую среду, например - dev, и переключаемся на нее:
 ```
-conda create --name dev
-conda activate dev
-```
-
-2. Устанавливаем все, что нам нужно (вручную):
-```
-conda install python=3.9.1 re2 requests nbconbert=5.6.1 notebook jupyter_contrib_nbextensions ipywidgets
+$ conda create --name dev
+$ conda activate dev
 ```
 
-Если все пройдет правильно - призапуске jupyter notebook ошибок не будет.
+4. Устанавливаем все, что нам нужно (вручную):
+```
+$ conda install python=3.9.1 re2 requests nbconbert=5.6.1 notebook jupyter_contrib_nbextensions ipywidgets ...
+```
+
+Если все пройдет правильно - при запуске jupyter notebook ошибок не будет.
