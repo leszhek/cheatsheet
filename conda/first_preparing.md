@@ -14,7 +14,7 @@ xcode-select --install
 ```
 Откроется окно, нужно подтвердить действие и подождать.
 
-2. Перейти на сайт [brew.sh](brew.sh), выбрать нужный язык и скопировать ссылку из окошка:
+2. Перейти на сайт [brew.sh](https://brew.sh/index_ru), выбрать нужный язык и скопировать ссылку из окошка:
 ```
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
@@ -87,7 +87,7 @@ $ conda activate dev
 
 4. Устанавливаем все, что нам нужно (вручную):
 ```
-$ conda install python=3.9.1 re2 requests nbconbert=5.6.1 notebook jupyter_contrib_nbextensions ipywidgets ...
+$ conda install python=3.9.1 re2 requests nbconvert=5.6.1 notebook jupyter_contrib_nbextensions ipywidgets ...
 ```
 
 Если все пройдет правильно - при запуске jupyter notebook ошибок не будет.
