@@ -8,26 +8,13 @@
 
 ### Подготовка
 
-1. Устанавливаем инструменты командной строки (они пригодятся в будущем):
-```
-xcode-select --install
-```
-Откроется окно, нужно подтвердить действие и подождать.
+1. Устанавливаем [homebrew](./brew.md), по инструкции из этого раздела
 
-2. Перейти на сайт [brew.sh](https://brew.sh/index_ru), выбрать нужный язык и скопировать ссылку из окошка:
-```
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-Скрипт расскажет, что он собирается делать и попросит подтверждения (для M1 - будет еще один пункт)
-
-3. Установим git и miniconda:
+2. Установим git и miniconda:
 ```
 brew insatll git
 brew install --cask miniconda
-
 ```
-*(подробнее о brew будет отдельно)*
-
 
 ### Первичная настройка
 
@@ -87,7 +74,16 @@ $ conda activate dev
 
 4. Устанавливаем все, что нам нужно (вручную):
 ```
-$ conda install python=3.9.1 re2 requests nbconvert=5.6.1 notebook jupyter_contrib_nbextensions ipywidgets ...
+$ conda install python=3.9.1 re2 requests nbconvert=5.6.1 jinja2=3.0.3 notebook jupyter_contrib_nbextensions ipywidgets ...
 ```
 
 Если все пройдет правильно - при запуске jupyter notebook ошибок не будет.
+
+Если ошибка, все же возникает - необходимо переустановить и активировать *wiidgetsnbextension*
+
+```
+$ jupyter nbextension install --py widgetsnbextension --sys-prefix
+$ jupyter nbextension disable widgetsnbextension --py --user
+$ jupyter nbextension disable widgetsnbextension --py --sys-prefix
+$ jupyter nbextension enable widgetsnbextension --py --sys-prefix
+```
