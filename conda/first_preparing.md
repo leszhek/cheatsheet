@@ -74,7 +74,7 @@ $ conda activate dev
 
 4. Устанавливаем все, что нам нужно (вручную):
 ```
-$ conda install python=3.9.1 re2 requests nbconvert=5.6.1 jinja2=3.0.3 notebook jupyter_contrib_nbextensions ipywidgets ...
+$ conda install python=3.9.1 re2 requests nbconvert=5.6.1 jinja2=3.0.3 notebook=6.4.8 jupyterlab_widgets=1.0.2 jupyter_contrib_nbextensions ipywidgets numpy pandas matplotlib seaborn ...
 ```
 
 Если все пройдет правильно - при запуске jupyter notebook ошибок не будет.
