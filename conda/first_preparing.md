@@ -71,10 +71,11 @@ channel_priority: flexible
 $ conda create --name dev
 $ conda activate dev
 ```
+*Думаю, что (base) не зря предлагают оставить нетронутой;
 
 4. Устанавливаем все, что нам нужно (вручную):
 ```
-$ conda install python=3.9.1 re2 requests nbconvert=5.6.1 jinja2=3.0.3 notebook=6.4.8 jupyterlab_widgets=1.0.2 jupyter_contrib_nbextensions ipywidgets numpy pandas matplotlib seaborn ...
+$ conda install python=3.9.1 nbconvert=5.6.1 jinja2=3.0.3 notebook=6.4.8 jupyterlab_widgets=1.0.2 widgetsnbextension=3.5.2 jupyter_contrib_nbextensions ipywidgets=7.6.5 re2 requests numpy pandas scikit-learn matplotlib seaborn openpyxl tqdm
 ```
 
 Если все пройдет правильно - при запуске jupyter notebook ошибок не будет.
@@ -82,8 +83,19 @@ $ conda install python=3.9.1 re2 requests nbconvert=5.6.1 jinja2=3.0.3 notebook=
 Если ошибка, все же возникает - необходимо переустановить и активировать *wiidgetsnbextension*
 
 ```
-$ jupyter nbextension install --py widgetsnbextension --sys-prefix
+$ jupyter nbextension disable widgetsnbextension --py
 $ jupyter nbextension disable widgetsnbextension --py --user
 $ jupyter nbextension disable widgetsnbextension --py --sys-prefix
+
+$ jupyter nbextension uninstall --py widgetsnbextension --user
+$ jupyter nbextension uninstall --py widgetsnbextension --sys-prefix
+
+$ jupyter nbextension install --py widgetsnbextension --sys-prefix
 $ jupyter nbextension enable widgetsnbextension --py --sys-prefix
+```
+
+5. И, наконец, для автоматической активации среды, прописываем в .zshrc (после блока активации conda):
+
+```
+conda activate dev  # dev - имя среды для активации
 ```
