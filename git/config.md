@@ -32,51 +32,29 @@
 Вроде, все хорошо. Но это работает из рук вон плохо:
 1. Русские имена файлов отображаются крокозябрами
 1. Русские коммиты - тоже
-1. По https (пользователь, пароль) на github не льется
+1. ~~По https (пользователь, пароль) на github не льется~~ *Нам это и не надо*
 
 ### Имена файлов
 
-Чтобы кириллица в именах файла правильно отображалась:
+Чтобы кириллица в именах файла правильно отображалась нужно в .gitconfig.* (локальный или глобальный) в секцию *core* добавить отключение параметра *quotepath*:
 
     [core]
-	    quotepath = false
+	    quotepath = off
+
+Либо отключить его из командной строки:
+
+```
+$ git config --global core.quotepath off
+```
 		
 ### Коммиты
 
-Чтобы кириллица читалась в коммитах:
-    
-	[i18n]
-	    commitencoding = cp1251
+А вот с коммитами - все иначе. Там править в *.gitconfig* не получится. Нужно в теминале прописать две команды:
 
-И в выводе log:
-    
-	[i18n]
-	    logoutputencoding = cp1251
+```
+$ git config --global --unset i18n.commitencoding
+$ git config --global --unset i18n.logoutputencoding
+```
+Чтобы git сам мог управлять кодировкой.
 
-### Подключение https
-
-Если теперь все оставить как есть, то запушить коммит на github по https не получится. Мешает секция *[http]* - грохнем ее. Заодно - грохнем все секции *[credential]* (я пока не разобрался зачем они нужны).
-
-### Мой текущий config
-
-    [diff "astextplain"]
-	    textconv = astextplain
-    [filter "lfs"]
-	    clean = git-lfs clean -- %f
-	    smudge = git-lfs smudge -- %f
-	    process = git-lfs filter-process
-	    required = true
-    [core]
-	    autocrlf = true
-	    symlinks = false
-	    editor = \"C:\\\\Program Files\\\\Notepad++\\\\notepad++.exe\" -multiInst -notabbar -nosession -noPlugin
-	    quotepath = false
-    [pull]
-	    rebase = false
-    [init]
-	    defaultBranch = master
-    [i18n]
-	    commitencoding = cp1251
-	    logoutputencoding = cp1251
-		
 *Поменять можно либо глобальный файл настроек либо локальный. Глобальный файл настроек находится здесь C:\Program Files\Git\etc\gitconfig, локальный в каталоге репозитория .git\config.*

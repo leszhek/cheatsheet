@@ -85,3 +85,4 @@ $ git config --global user.email johndoe@example.com
 $ git config user.name "John Other"
 $ git config user.email johnother@example.com
 ```
+А про русскую локаль под windows [здесь](config.md)
