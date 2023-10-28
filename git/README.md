@@ -4,7 +4,7 @@
 
 - [Первичная настройка git (несколько аккаунтов)](dbl_acc_git.md)
 - [Коротенько о работе с git](tutorial_micro.md)
-- [Большой туториал git (Бен Лин "Волшебство git")](magic_git/introduction.md)
+- [Большой туториал git (Бен Лин "Волшебство git")](magic_git/README.md)
 - [Как сконфигурировать git под винду](config.md)
 - [gitbash поменять системмное приглашение](gitbash.md)
 
